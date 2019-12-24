@@ -1,2 +1,2 @@
 # raspberry-lemon
-Any projects i make will go here.
+Any projects I make will go here.
