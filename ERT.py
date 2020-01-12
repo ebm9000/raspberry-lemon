@@ -1,52 +1,3 @@
-#Programs:
-#1: Calculate Estimated Runtime (in hours)
-    #Author: EBM9000
-    #Associated function: timeimp()
-#2: Create app_config.xml file (?)
-
-def programslist():
-    #Includes formatting with ~ and  * characters
-    programs = [
-        ["1", "Calculate Estimated Runtime (in hours)", "EBM9000", "timeimp()"],
-        ["2", "Create a config file for a project", "EBM9000", "createconfig()"],
-        ["~"*3,"~"*40,"~"*15,"~"*5],
-        ["H", "Help Document 1", "KurzedMetal", "N/A"],
-        ["E", "Exit the program", "N/A", "exit"],
-        ["*"*3,"*"*40,"*"*15,"*"*5]
-    ]
-    #Prints the header and the first set of *'s above the table (can't be in the loop)
-    print("*"*3,"*"*40,"*"*15,"*"*5)
-    print("{: <3} {: <40} {: <15} {: <5}".format("#", "Program Name", "Author", "Function Call"))
-    
-    #prints each program in the format above
-    for row in programs:
-        print("{: <3} {: <40} {: <15} {: <5}".format(*row))
-
-    #Verifies that the program selection variable is reset on each return
-    progSelect = 0
-    progSelect = input("\nSelect a program: ")
-
-    #Loops to determine what to execute based on the progSelect variable
-    if progSelect == str(1):
-        print(progSelect)
-        timeinp()
-    
-    elif progSelect == "H" or "h":
-        print(progSelect)
-        print("\nI used this link to help format my columns in the program list: \nhttps://stackoverflow.com/questions/9989334/create-nice-column-output-in-python\nThanks to KurzedMetal for the post!\n")
-        programslist()
-
-    #does not currently funciton; always executes the *above* statement if a letter is entered
-    elif "E" or "e" or "exit" or "Exit" or "EXIT" in progSelect:
-        print(progSelect)
-        print("Goodbye!")
-
-    else:
-        print(progSelect)
-        print("Error: selection not valid. Try again\n")
-        programslist()
-    
-
 def timeinp():
     print("\n##############\nCalculate Estimated Runtime (in hours)\nby EBM9000\n##############\n")
     
@@ -158,7 +109,6 @@ def timeinp():
     timebound(Secs[0] , Secs[1])
     statistics()
     input("Execution complete. Press Enter to exit...")
+    exit()
 
-print("##############\nBoinc Pack\nby EBM9000\n##############\n")
-programslist()
-
+timeinp()
