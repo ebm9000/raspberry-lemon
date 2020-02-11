@@ -133,7 +133,7 @@ def appconfig_xml():
     def max_concurrent():
         while True:
             try:
-                x = int(input("\nEnter the maxEnter the maximum number of tasks you want running for this project:\n###\n"))
+                x = int(input("\nEnter the maximum number of tasks you want running for this project:\n###\n"))
         
             except ValueError:
                 print("Error: input must be an integer")
