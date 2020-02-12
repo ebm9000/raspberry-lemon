@@ -1,4 +1,9 @@
-import random as rand
+from random import choice as rand
+from os import system as system
+
+stage = [1]
+score = [0]
+
 def script():
     rngroll = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52]
     deck = [
@@ -57,10 +62,10 @@ def script():
         ]
     hand = [int(0)]
     aceCount = [0]
-
+    
     def drawcard():
         #chooses a random number 1-52
-        x = rand.choice(rngroll)        
+        x = rand(rngroll)        
         #removes card after drawn
         rngroll.remove(x)
 
@@ -73,14 +78,36 @@ def script():
         #Sets up a check to see if you hold an ace after you go over 21
         if 'Ace' in deck[x-1][1]:
             aceCount[0] += 1
+        
+        menu()
 
     def startGameCheck():
         #if hand[0], your value, is 0 then there is no game in progress.
-        if int(hand[0]) == 0:
-            print("\nYour Hand: Empty!")
-        else: 
-            print("\nYour Hand: " + str(hand[1:]))
-        print("Deck Value: " + str(hand[0]))
+        if stage[0] == 6:
+            system('cls')
+            print("You finished all 5 rounds. Your score was " + str(score[0]))
+            print("If you want to play again, type 'blackjack' at the prompt. Goodbye!")
+            exit()
+
+        else:
+            if int(hand[0]) == 0:
+                system('cls')
+                print("\nRound " + str(stage[0]) + " of 5\n")
+                print("Your Hand: Empty!")
+                print("Your Score: " + str(score[0]))
+            else: 
+                print("\nYour Hand: " + str(hand[1:]))
+            print("Deck Value: " + str(hand[0]) + "\n")
+
+    def scoring():
+        if hand[0] < 21:
+            score[0] += 3*(21-hand[0])
+        elif hand[0] == 21:
+            score[0] += 0
+        elif hand[0] > 21:
+            score[0] += 7 * (hand[0]-21)
+        stage[0] += 1
+        script()
 
     def menu():
         #prints appropriate text based on if a game is ongoing
@@ -88,36 +115,35 @@ def script():
         
         if int(hand[0]) == 21: 
             print("You Win!")
-            cont_inue = int(input("Continue?: "))
-            if cont_inue == int(1):
-                script()
-            else:
-                print("Goodbye!")
-                exit()
+            input("Press Enter to go to the next round... ")
+            scoring()
         
         #If you're over 21...
         elif hand[0] not in range(0,21):
             #Ace check; if you don't have one the game is over
             if aceCount[0] == 0:
                 print("You got over 21!")
-                cont_inue = int(input("Retry? "))
-                if cont_inue == int(1):
-                    script()
-                else:
-                    print("Goodbye!")
-                    exit()
+                input("Press Enter to go to the next round...")
+                scoring()
+
             #Ace check; if you have an ace your hand value drops by 10 and the game resumes
-            elif aceCount[0] != 0:
+            elif aceCount[0] > 0:
                 print("You got over 21, but you drew 1 or more Aces! One of them has been devalued to 1 to let you keep drawing")
                 hand[0] += -10
-            #needs to be debugged
+                aceCount[0] += -1
+                menu()
         
         else:
-            card = int(input("Draw Card? "))
-            #add a check if you want to leave
-            if card == int(1):
-                drawcard()
-                menu()
+            while True:
+                try:
+                    card = int(input("Draw Card? 1 for yes or 2 to end the round "))
+                    #add a check if you want to leave
+                except ValueError:
+                    drawcard()
+                if card == int(1):
+                    drawcard()
+                elif card == int(2):
+                    scoring()
     
     #executes Menu when script() is ran
     menu()
