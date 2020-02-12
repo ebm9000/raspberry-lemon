@@ -1,6 +1,4 @@
 # raspberry-lemon
 Any projects I make will go here.
 
-ERT.py - Estimated Runtime Calculator; 
-app_config.py - create a basic Boinc app_config.xml file (w/ my directories; poc);
-Menu.zip - Program launcher for Windows 7ES-32
+ERT: remaining time calculator for boinc tasks; SHELL: a shell for me unattended thin client running Boinc; BlackJack: self explainitory; app_config: A basic app_config editor for boinc; Menu.zip: an old version of the shell.py file   
