@@ -1,0 +1,26 @@
+#suits: 
+# ♣
+# ♠
+# ♥
+# ♦
+
+line1 = ["|¯¯¯¯¯¯˥"]
+line2 = ["|A     |"]
+line3 = ["|♣     |"]
+line4 = ["|     ♣|"]
+line5 = ["|     A|"]
+line6 = ["|______˩"]
+print("".join(line1[0:]))
+print("".join(line2[0:]))
+print("".join(line3[0:]))
+print("".join(line4[0:]))
+print("".join(line5[0:]))
+print("".join(line6[0:]))
+
+
+line7 = ["|¯¯¯¯¯¯˥"]
+line8 = ["|10    |"]
+line9 = ["|♣     |"]
+lineA = ["|     ♣|"]
+lineB = ["|    10|"]
+lineC = ["|______˩"]
