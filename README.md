@@ -3,3 +3,5 @@ The ADHD Brain dictates that when I want to dive into Python, whatever I make go
 
 Dumping Ground: raspberry-lemon
 Active Repos: all others
+
+I don't comment my code very well; my brain is wired differently. Please excuse this
