@@ -192,3 +192,4 @@ def appconfig_xml():
     addLineMenu()
             
 appconfig_xml()      
+
